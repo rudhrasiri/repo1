@@ -1,0 +1,63 @@
+# 🔧 Linux Command Cheat Sheet – `sed`, `grep`, `awk`, `find`
+
+A quick reference guide for commonly used text processing and search utilities in Linux.
+Purpose:**  
+Searches for lines that match a pattern in files.
+grep "error" logfile.txt                  # Find lines containing 'error'
+grep -i "error" logfile.txt               # Case-insensitive search
+grep -r "TODO" ./project/                 # Recursively search in directory
+grep -v "DEBUG" logfile.txt               # Exclude lines containing 'DEBUG'
+grep -n "main" source.c                   # Show line numbers
+
+*************************************
+🛠 sed – Stream Editor
+Purpose:
+Performs basic text transformations on an input stream (file or input).
+
+sed [options] 'command' file
+🔹 Examples:
+
+sed 's/apple/mango/' fruits.txt           # Replace first 'apple' with 'mango'
+sed 's/apple/mango/g' fruits.txt          # Replace all 'apple' with 'mango'
+sed -n '5,10p' file.txt                   # Print lines 5 to 10
+sed '/^#/d' config.txt                    # Delete comment lines starting with #
+
+****************************************
+
+📊 awk – Pattern Scanning & Processing
+Purpose:
+Processes and analyzes text files line by line using patterns and actions.
+
+awk 'pattern {action}' file
+🔹 Examples:
+bash
+Copy
+Edit
+awk '{print $1}' data.txt                 # Print first column of each line
+awk -F: '{print $1, $3}' /etc/passwd      # Print username and UID
+awk '$3 > 50 {print $1, $3}' marks.csv    # Print name and marks > 50
+
+****************************************
+🔍 find – Locate Files in Directory Hierarchy
+Purpose:
+Searches files and directories based on conditions like name, size, time, etc.
+find [path] [expression]
+
+🔹 Examples:
+
+find . -name "*.sh"                       # Find all .sh files in current dir
+find /var/log -type f -mtime -1          # Files modified in last 1 day
+find /home -size +10M                    # Files larger than 10MB
+find . -type f -name "*.log" -delete     # Delete all .log files
+
+****************************
+✅ Summary Table
+Command	Use Case	Example
+
+grep	Search for a string in files	grep "main" program.c
+sed	Replace or delete text in a file	sed 's/error/fix/' log.txt
+awk	Print specific columns or apply logic	awk '{print $2}' data.csv
+find	Search files by name, size, time, etc.	find . -name "*.conf"
+
+
+
