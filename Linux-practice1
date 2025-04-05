@@ -30,9 +30,7 @@ Processes and analyzes text files line by line using patterns and actions.
 
 awk 'pattern {action}' file
 🔹 Examples:
-bash
-Copy
-Edit
+
 awk '{print $1}' data.txt                 # Print first column of each line
 awk -F: '{print $1, $3}' /etc/passwd      # Print username and UID
 awk '$3 > 50 {print $1, $3}' marks.csv    # Print name and marks > 50
